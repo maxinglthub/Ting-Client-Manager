@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作手冊 - Ting Client Manager</title>
+    <style>
+        /* --- 核心變數 (macOS Dark Mode) --- */
+        :root {
+            --bg-color: #000000;
+            --sidebar-bg: #1C1C1E;
+            --card-bg: #2C2C2E;
+            --accent-blue: #0A84FF;
+            --text-main: #FFFFFF;
+            --text-sub: #98989D;
+            --border: #38383A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Microsoft JhengHei UI", -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            height: 100vh;
+            overflow: hidden; /* 防止整個頁面捲動，只捲動內容區 */
+        }
+
+        /* --- 左側導航欄 --- */
+        nav {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        nav h1 {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: var(--text-main);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .menu-label {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .menu-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .menu-list li {
+            margin-bottom: 5px;
+        }
+
+        .menu-list a {
+            display: block;
+            text-decoration: none;
+            color: var(--text-sub);
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .menu-list a:hover, .menu-list a.active {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        /* --- 右側內容區 --- */
+        main {
+            flex: 1;
+            padding: 40px 60px;
+            overflow-y: auto; /* 只有這裡捲動 */
+            scroll-behavior: smooth;
+        }
+
+        section {
+            max-width: 800px;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 40px;
+        }
+
+        section:last-child { border-bottom: none; }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--text-main);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: var(--accent-blue);
+        }
+
+        p {
+            line-height: 1.8;
+            color: #d1d1d1;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: #d1d1d1;
+        }
+
+        li { margin-bottom: 8px; }
+
+        /* --- 提示框 --- */
+        .tip {
+            background-color: rgba(10, 132, 255, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+            color: #e0e0e0;
+        }
+        
+        .tip strong { color: var(--accent-blue); }
+
+        /* --- 鍵盤按鍵樣式 --- */
+        kbd {
+            background-color: #333;
+            border-radius: 4px;
+            border: 1px solid #555;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+            color: white;
+            font-size: 0.85em;
+            padding: 2px 6px;
+            font-family: monospace;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h1>📚 使用手冊</h1>
+        
+        <div class="menu-label">開始使用</div>
+        <ul class="menu-list">
+            <li><a href="#intro" class="active">軟體介紹</a></li>
+        </ul>
+
+        <div class="menu-label">功能操作</div>
+        <ul class="menu-list">
+            <li><a href="#search">🔍 搜尋與導航</a></li>
+            <li><a href="#manage">📝 新增與編輯</a></li>
+            <li><a href="#save">💾 儲存與備份</a></li>
+        </ul>
+
+        <div class="menu-label">其他</div>
+        <ul class="menu-list">
+            <li><a href="#faq">❓ 常見問題</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="intro">
+            <h2>軟體介紹</h2>
+            <p>歡迎使用 <strong>廷好搜搜尋軟體(Ting Client Manager)</strong>。這是一套專為電腦使用者設計的輕量級客戶管理系統。它結合了現代化的深色介面與 Excel 的便利性，讓您能快速查找客戶資料。</p>
+        </section>
+
+        <section id="search">
+            <h2>搜尋與地圖導航</h2>
+            <p>這是本軟體最強大的核心功能，支援「模糊搜尋」，不需要記得完整的名字也能找到人。</p>
+
+            <h3>如何搜尋？</h3>
+            <ol style="margin-left: 20px; line-height: 2;">
+                <li>在左上角的搜尋框輸入關鍵字（例如：姓名、手機後三碼、或地址片段）。</li>
+                <li>按下 <kbd>Enter</kbd> 鍵，或點擊 <strong>🔍 執行搜尋</strong> 按鈕。</li>
+                <li>右側列表會即時顯示篩選結果。</li>
+            </ol>
+        </section>
+
+        <section id="manage">
+            <h2>新增、編輯與刪除</h2>
+            
+            <h3>新增資料</h3>
+            <p>點擊左側的 <strong>➕ 新增客戶</strong>，會彈出填寫視窗。填寫完畢後按儲存即可。</p>
+
+            <h3>編輯資料</h3>
+            <p>在右側列表中，<strong>雙擊 (Double Click)</strong> 任何一筆資料，即可打開編輯視窗修改內容。注意：客戶編號強烈建議不要更動。</p>
+
+            <h3>刪除資料</h3>
+            <p>選取要刪除的資料行，點擊左側紅色的 <strong>🗑️ 刪除選取</strong> 按鈕。系統會再次詢問確認，避免誤刪。</p>
+        </section>
+
+        <section id="save">
+            <h2>儲存與 Excel 同步</h2>
+            <p>本系統的所有資料都直接連動您的 Excel 檔案。</p>
+            
+            <div class="tip">
+                <strong>重要觀念：</strong> 您在軟體中的所有修改（新增、編輯、刪除），都只是暫時存在記憶體中。
+            </div>
+
+            <p>請務必在關閉程式前，點擊左側的 <strong>💾 儲存檔案</strong>。看到「儲存成功」的提示後，資料才會真正寫入Excel檔案中。</p>
+        </section>
+
+        <section id="faq">
+            <h2>常見問題 (FAQ)</h2>
+
+            <h3>Q1: Excel 檔案打不開？</h3>
+            <p>請確保在執行本程式時，<strong>不要</strong>用 Excel 軟體同時開啟Excel。Excel 會鎖定檔案，導致程式無法存檔。</p>
+        </section>
+
+    </main>
+
+    <script>
+        // 簡單的點擊切換 Active 狀態腳本
+        const links = document.querySelectorAll('.menu-list a');
+        links.forEach(link => {
+            link.addEventListener('click', function() {
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
