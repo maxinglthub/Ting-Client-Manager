@@ -59,8 +59,8 @@ class ClientDB:
         if not self.display_cols:
             self.display_cols = list(self.df.columns)
 
+    #模糊搜尋
     def search(self, q_words: List[str], columns: Optional[List[str]]=None, use_or:bool=False) -> pd.DataFrame:
-        """模糊搜尋"""
         if not q_words or self.df.empty:
             return self.df.copy()
 
@@ -96,8 +96,8 @@ class ClientDB:
 
         return self.df[combined_mask].copy()
 
+    #用索引更新整列資料
     def edit_row(self, index: int, data: Dict[str, str]) -> bool:
-        """用索引更新整列資料"""
         if index in self.df.index:
             for k, v in data.items():
                 if k in self.df.columns:
